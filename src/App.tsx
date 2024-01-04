@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './styles/App.sass'
+import axios from 'axios';
 
 function App() {
   const [count, setCount] = useState(0)
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    axios.get('https://animechan.xyz/api/random')
+    .then(response => {
+      setData(response.data)
+      console.log(data)
+    })
+  }, [])
 
   return (
     <>
@@ -26,7 +36,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        {data || '404'}
       </p>
     </>
   )
