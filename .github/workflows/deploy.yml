@@ -37,9 +37,9 @@ jobs:
           cache: 'npm'
       - run: corepack enable
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --prod
       - name: Build
-        run: yarn run build
+        run: yarn run vite build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
