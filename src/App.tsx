@@ -56,7 +56,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
+      <div className="card has-background-black-ter">
         <button className="button is-dark" onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -64,10 +64,10 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
+      <p>
         {data.quote || '404'}
       </p>
-      <p className="read-the-docs">
+      <p>
         {data.character || '404'}
       </p>
       <ChartComponent data={chartData} />
