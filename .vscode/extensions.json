@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "antfu.vite",
+    "dbaeumer.vscode-eslint",
+    "firsttris.vscode-jest-runner",
+    "christian-kohler.npm-intellisense",
+    "redhat.vscode-yaml",
+    "formulahendry.auto-complete-tag",
+    "syler.sass-indented"
+  ]
+}
