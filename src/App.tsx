@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import './styles/App.sass'
 import axios from 'axios';
 import {map, entries} from 'lodash';
-import CurrencyDynamicsComponent from './components/CurrencyDynamicsComponent';
+import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify';
+import CurrencyDynamicsComponent from './components/CurrencyDynamicsComponent';
+import DepositCalculatorComponent from './components/DepositCalculatorComponent';
 import 'react-toastify/dist/ReactToastify.css';
+import './styles/App.sass'
 
 export default function App() {
   const [currencies, setСurrencies] = useState(null)
@@ -24,6 +25,7 @@ export default function App() {
     <>
       <h1 className="mb-4">Главная</h1>
       <CurrencyDynamicsComponent currencies={currencies}></CurrencyDynamicsComponent>
+      <DepositCalculatorComponent currencies={currencies}></DepositCalculatorComponent>
       <ToastContainer />
     </>
   )
