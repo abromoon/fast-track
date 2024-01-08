@@ -12,7 +12,6 @@ export default function CurrencyDynamicsComponent({currencies}) {
   const [chartData, setChartData] = useState(null)
   const [availableExchanges, setAvailableExchanges] = useState(null)
 
-
   useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/available')
     .then(response => {
@@ -125,7 +124,7 @@ export default function CurrencyDynamicsComponent({currencies}) {
   return (
     <>
       <h2 className="mb-2">Динамика валюты</h2>
-      <div className="mb-4">
+      <div className="mb-4 is-flex is-flex-direction-row is-justify-content-center is-align-items-center">
         <SelectorComponent options={currencies} onSelect={handleSelectedCurrency} placeholder="Выберите валюту" />
         <span className="mx-1">в</span>
         <SelectorComponent options={currencies} onSelect={handleSelectedCurrencyIn} placeholder="Выберите валюту" />
