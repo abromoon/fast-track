@@ -3,23 +3,24 @@ import LineChartComponent from "./LineChartComponent";
 import SelectorComponent from "./SelectorComponent";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { map, sortBy } from "lodash";
+import { includes, keys, map, sortBy } from "lodash";
 
 export default function CurrencyDynamicsComponent({currencies}) {
   const [currency, setСurrency] = useState(null)
   const [currencyIn, setСurrencyIn] = useState(null)
   const [daysAmount, setDaysAmount] = useState(null)
   const [chartData, setChartData] = useState(null)
+  const [availableExchanges, setAvailableExchanges] = useState(null)
+
 
   useEffect(() => {
-    if (!currency) return
-
     axios.get('https://economia.awesomeapi.com.br/json/available')
     .then(response => {
       console.log(response.data)
-
+      console.log(keys(response.data))
+      setAvailableExchanges(keys(response.data))
     })
-  }, [currency, currencyIn])
+  }, [])
 
   const handleSelectedCurrency = (selectedOption) => {
     console.log(`Currency ${selectedOption}`)
@@ -57,6 +58,24 @@ export default function CurrencyDynamicsComponent({currencies}) {
       return
     }
     
+    if (currency === currencyIn) {
+      toast.error(`Выбраны одинаковые валюты ${currency}-${currencyIn}`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 3000,
+        theme: "dark"
+      })
+      return
+    }
+
+    if (!includes(availableExchanges, `${currency}-${currencyIn}`)) {
+      toast.error(`В API отсутствуют данные для курса ${currency}-${currencyIn}`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 3000,
+        theme: "dark"
+      })
+      return
+    }
+
     axios.get(`https://economia.awesomeapi.com.br/json/daily/${currency}-${currencyIn}/${daysAmount}`)
       .then(response => {
         
