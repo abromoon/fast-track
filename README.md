@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+# Fast Track
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание
 
-Currently, two official plugins are available:
+Приложение состоит из двух функций: вывод графика динамики валюты и калькулятора вкладов.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Динамика валюты
 
-## Expanding the ESLint configuration
+Пользователь выбирает две валюта, соотношение которых он хочет просмотреть, и период времени от текущего дня. Нажав кнопку "Рассчитать" пользователь увидит график.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Калькулятора вкладов
 
-- Configure the top-level `parserOptions` property like this:
+Пользователь может рассчитать вклад в разных валютах. Калькулятор работает следущим образом: существует два вклада в разных валютах под разные проценты. Пользователь выбирает валюты вкладов и проценты, под которые он может положить свои деньги для каждой валюты. После того как пользователь нажём кнопку "Рассчитать", он получит результат, который, основываясь на текущем курсе, определит в какой валюте выгоднее будет взять вклад.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Проблемы
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+В используемом API не для всех видов валют существуют курсы обмена. Поэтому некоторые комбинации будут выдавать ошибку. Я проверял работу в основном на курсе AED к EUR, так как они находятся в начале списка. По идее, хорошо должны работать популярные валюты (EUR, USD, RUB, BRL).
+
