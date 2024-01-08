@@ -10,7 +10,7 @@ export default function ChartComponent({ data }) {
     const ctx = chartRef.current.getContext('2d');
 
     const chart = new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: data,
     });
 
@@ -20,8 +20,8 @@ export default function ChartComponent({ data }) {
   }, [data]);
 
   return (
-    <div>
-      <canvas ref={chartRef} width="400" height="400" />
-    </div>
+    <>
+      <canvas ref={chartRef} />
+    </>
   );
 }
