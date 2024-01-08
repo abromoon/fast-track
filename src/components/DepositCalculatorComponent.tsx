@@ -104,7 +104,7 @@ export default function DepositCalculatorComponent({ currencies }) {
           <button className="is-dark ml-3" onClick={calculate}>Рассчитать</button>
         </div>
       </div>
-      <p>{result && `Выгоднее вкладывать в ${result}`}</p>
+      <p>{result && `Выгоднее вкладывать в ${result}.`}</p>
     </>
   )
 }
